@@ -66,6 +66,13 @@
   }
 }
 
+@utility auth-dark-image {
+  background-image: url("/images/auth-dark.png");
+}
+@utility auth-white-image {
+  background-image: url("/images/auth-white.png");
+}
+
 @utility background-light850_dark100 {
   @apply bg-light-850 dark:bg-dark-100;
 }
