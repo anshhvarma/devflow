@@ -1,8 +1,6 @@
 import React from "react";
 
-import { auth, signOut } from "@/auth";
-import { Button } from "@/components/ui/button";
-import ROUTES from "@/constant/route";
+import { auth } from "@/auth";
 
 const Home = async () => {
   const session = await auth();
@@ -10,15 +8,9 @@ const Home = async () => {
   console.log(session);
   return (
     <div>
-      <form
-        className="px-10 pt-[100px]"
-        action={async () => {
-          "use server";
-          await signOut({ redirectTo: ROUTES.SIGN_IN });
-        }}
-      >
-        <Button type="submit">Logout</Button>
-      </form>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus
+      perferendis consectetur doloribus fugit vitae dolore ipsa similique totam
+      corrupti, velit corporis dolor ullam amet. Odit eum nemo non odio dolorem.
     </div>
   );
 };
