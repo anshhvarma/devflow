@@ -4,6 +4,7 @@ import React from "react";
 import LocalSearch from "@/components/search/local-search";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constant/route";
+import HomeFilters from "@/components/filters/home-filter";
 
 const question = [
   {
@@ -48,11 +49,14 @@ interface SearchParams {
   searchParams: Promise<{ [key: string]: string }>;
 }
 const Home = async ({ searchParams }: SearchParams) => {
-  const { query = "" } = await searchParams;
+  const { query = "", filter = "" } = await searchParams;
 
-  const FilterQuestion = question.filter((question) =>
-    question.title.toLowerCase().includes(query?.toLowerCase())
-  );
+  const FilterQuestion = question.filter((q) => {
+    const matchesQuery = q.title.toLowerCase().includes(query?.toLowerCase());
+    const matchesFilter =
+      filter === "" || q.title.toLowerCase().includes(filter.toLowerCase());
+    return matchesQuery && matchesFilter;
+  });
   return (
     <>
       <section className="flex w-full flex-col-reverse gap-4 justify-between sm:flex-row sm:items-center">
@@ -72,7 +76,7 @@ const Home = async ({ searchParams }: SearchParams) => {
           otherClasses="flex-1"
         />
       </section>
-      homeFilter
+      <HomeFilters />
       <div className="mt-10 flex w-full flex-col gap-5">
         {FilterQuestion.map((question) => (
           <h1 key={question._id}>{question.title} </h1>
