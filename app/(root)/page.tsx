@@ -5,6 +5,7 @@ import LocalSearch from "@/components/search/local-search";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constant/route";
 import HomeFilters from "@/components/filters/home-filter";
+import QuestionCards from "@/components/cards/question-card";
 
 const question = [
   {
@@ -14,16 +15,18 @@ const question = [
     tags: [
       { _id: "1", name: "react" },
       { _id: "2", name: "javascript" },
-      { _id: "3", name: "typescript" },
     ],
     author: {
       _id: "1",
       name: "John Doe",
+      image:
+        "https://img.freepik.com/premium-vector/male-face-avatar-icon-set-flat-design-social-media-profiles_1281173-3806.jpg?semt=ais_hybrid&w=740&q=80",
     },
     upvotes: 10,
     answers: 5,
     views: 100,
-    createdAt: new Date(),
+    createdAt: new Date("12/21/2025"),
+    answer: 0,
   },
   {
     _id: "2",
@@ -37,11 +40,14 @@ const question = [
     author: {
       _id: "1",
       name: "John Doe",
+      image:
+        "https://img.freepik.com/premium-vector/male-face-avatar-icon-set-flat-design-social-media-profiles_1281173-3806.jpg?semt=ais_hybrid&w=740&q=80",
     },
     upvotes: 10,
     answers: 5,
     views: 100,
     createdAt: new Date(),
+    answer: 0,
   },
 ];
 
@@ -51,7 +57,7 @@ interface SearchParams {
 const Home = async ({ searchParams }: SearchParams) => {
   const { query = "", filter = "" } = await searchParams;
 
-  const FilterQuestion = question.filter((q) => {
+  const FilteredQuestion = question.filter((q) => {
     const matchesQuery = q.title.toLowerCase().includes(query?.toLowerCase());
     const matchesFilter =
       filter === "" || q.title.toLowerCase().includes(filter.toLowerCase());
@@ -78,8 +84,8 @@ const Home = async ({ searchParams }: SearchParams) => {
       </section>
       <HomeFilters />
       <div className="mt-10 flex w-full flex-col gap-5">
-        {FilterQuestion.map((question) => (
-          <h1 key={question._id}>{question.title} </h1>
+        {FilteredQuestion.map((question) => (
+          <QuestionCards key={question._id} question={question} />
         ))}
       </div>
     </>
