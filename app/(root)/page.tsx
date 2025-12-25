@@ -7,11 +7,12 @@ import ROUTES from "@/constant/route";
 import HomeFilters from "@/components/filters/home-filter";
 import QuestionCards from "@/components/cards/question-card";
 
-const question = [
+const question: Question[] = [
   {
     _id: "1",
     title: "What is the best way to learn React?",
-    description: "What is the best way to learn React?",
+    content:
+      "I'm new to web development and want to learn React. What resources and approaches would you recommend for a beginner?",
     tags: [
       { _id: "1", name: "react" },
       { _id: "2", name: "javascript" },
@@ -23,15 +24,15 @@ const question = [
         "https://img.freepik.com/premium-vector/male-face-avatar-icon-set-flat-design-social-media-profiles_1281173-3806.jpg?semt=ais_hybrid&w=740&q=80",
     },
     upvotes: 10,
-    answers: 5,
     views: 100,
     createdAt: new Date("12/21/2025"),
-    answer: 0,
+    answer: 5,
   },
   {
     _id: "2",
     title: "What is javascript?",
-    description: "What is the best way to learn React?",
+    content:
+      "Can someone explain what JavaScript is and how it differs from other programming languages?",
     tags: [
       { _id: "1", name: "react" },
       { _id: "2", name: "javascript" },
@@ -44,10 +45,9 @@ const question = [
         "https://img.freepik.com/premium-vector/male-face-avatar-icon-set-flat-design-social-media-profiles_1281173-3806.jpg?semt=ais_hybrid&w=740&q=80",
     },
     upvotes: 10,
-    answers: 5,
     views: 100,
     createdAt: new Date(),
-    answer: 0,
+    answer: 5,
   },
 ];
 
